@@ -102,12 +102,6 @@ COD2_ASSERT_FIELD(displayContextDef_t, bias, 0);
 COD2_ASSERT_FIELD(displayContextDef_t, realTime, 4);
 COD2_ASSERT_FIELD(dvar_t, current, 8);
 
-#if COD2_FEATURE_GAMEPAD
-extern void UI_ConsoleMode_Init(void *info);
-extern int UI_ConsoleMode_SuppressCursor(void);
-extern void UI_ConsoleMode_DrawGlyphs(void *info);
-extern void UI_Gamepad_RegisterMenus(uiInfo_t *info);
-#endif
 extern qboolean g_editingField;
 extern const dvar_t *ui_gametype;
 extern const dvar_t *ui_netGameTypeName;
@@ -1361,12 +1355,6 @@ void UI_Init(void)
     Dvar_SetString(ui_netGameTypeName, sharedUiInfo.gameTypes[netGameTypeIdx].gameType);
 
     Dvar_RegisterBool_mac("ui_multiplayer", 1, 0x1040);
-
-#    if COD2_FEATURE_GAMEPAD
-
-    UI_ConsoleMode_Init(uiInfo);
-    UI_Gamepad_RegisterMenus(uiInfo);
-#    endif
 }
 #endif
 
@@ -3267,13 +3255,6 @@ void UI_Refresh(void)
 after_browser:
     UI_BuildServerStatus(0);
     UI_BuildFindPlayerList();
-
-#if COD2_FEATURE_GAMEPAD
-
-    UI_ConsoleMode_DrawGlyphs(uiInfo);
-    if (UI_ConsoleMode_SuppressCursor())
-        return;
-#endif
 
     UI_DrawHandlePic((float)(uiInfo->uiDC.cursorx - 16),
                      (float)(uiInfo->uiDC.cursory - 16),

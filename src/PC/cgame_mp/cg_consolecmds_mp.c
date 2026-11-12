@@ -349,12 +349,4 @@ void CG_InitConsoleCommands(void)
     CL_AddCgameCommand("printentities");
     CL_AddCgameCommand("muteplayer");
     CL_AddCgameCommand("unmuteplayer");
-
-#if COD2_FEATURE_RUMBLE
-
-    {
-        extern void CG_InitRumble(void);
-        CG_InitRumble();
-    }
-#endif
 }

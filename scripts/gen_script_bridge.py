@@ -6,7 +6,7 @@
 The engine calls the module by C names; CoD2rev-Plus's code (src/script, the
 VM, or src/server) defines C++ functions (some overloaded) and calls engine
 functions by C++ names. Reading the module's objects of a build configured
-with it on (COD2_PLUS_SCRIPT, COD2_PLUS_SERVER), this writes:
+with it on (the VM is in every build; the server with COD2_PLUS_SERVER), this writes:
 
 - src/compat/<module>_exports.cpp: for each name in
   test/<module>_interface.txt, an extern "C" thunk whose symbol is the C name

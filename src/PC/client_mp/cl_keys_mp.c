@@ -136,10 +136,6 @@ void Key_Bindlist_f(void);
 void CL_KeyEvent(int key, const qboolean down, const unsigned int time);
 void Key_ClearStates(void);
 
-#if COD2_FEATURE_GAMEPAD
-extern void CL_Gamepad_NoteKbmActive(void);
-#endif
-
 qboolean Key_GetOverstrikeMode(void)
 {
     return *key_overstrikeMode;
@@ -1236,12 +1232,6 @@ void CL_KeyEvent(int key, const qboolean down, const unsigned int time)
         if (*anykeydown > 0)
             --*anykeydown;
     }
-
-#if COD2_FEATURE_GAMEPAD
-
-    if (down && !repeated && (key < 0xcf || key > 0xde))
-        CL_Gamepad_NoteKbmActive();
-#endif
 
     if (key == '`' || key == '~') {
         CL_HandleConsoleToggleKey(down);

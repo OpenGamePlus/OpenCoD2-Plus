@@ -80,10 +80,9 @@ set(COD2_CXX_NEVER "^(blobs|PC/speex|PC/jpeg-6|PC/zlib|win32/sdl2)/")
 
 # OpenCoD2-Plus Server's script VM, server, game, bgame and collision in every
 # build (the engine's own were removed, ADR 0015); the sources and the data
-# blobs test these macros. The client's local games run on them too, and cgame
+# blobs test the COD2_PLUS_* macros. The client's local games run on them too, and cgame
 # keeps the engine's bgame, whose globals have their eng_ names
 # (scripts/bgame_names.py). PROTOCOL_VERSION follows the game version.
-add_compile_definitions(COD2_PLUS_SCRIPT=1)   # the data blobs leave the VM globals to src/script
 set(COD2_PLUS_CLIENT_SERVER ON)
 if(WIN32 AND NOT COD2_WIN32_CLIENT)
   set(COD2_PLUS_CLIENT_SERVER OFF)   # a MinGW configure builds either the client or the dedicated server

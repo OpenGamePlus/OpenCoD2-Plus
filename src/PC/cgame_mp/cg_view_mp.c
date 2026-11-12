@@ -1051,14 +1051,6 @@ qboolean CG_DrawActiveFrame(int serverTime, DemoType demoType,
         CL_IssueDelayedDrawing(delayedHandle);
     }
 
-#if COD2_FEATURE_RUMBLE
-
-    {
-        extern void CG_UpdateRumble(void);
-        CG_UpdateRumble();
-    }
-#endif
-
     *(void **)imp_bgs = 0;
     return 1;
 }

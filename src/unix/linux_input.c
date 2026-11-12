@@ -10,12 +10,6 @@
 #include "cod2_feature_config.h"
 #include "in_mouse.h"
 
-#if COD2_FEATURE_GAMEPAD
-
-extern void CL_Gamepad_Frame(void);
-extern void CL_Gamepad_HandleDeviceEvent(int sdlEventType, int which);
-#endif
-
 extern void CCallOfDutyEngine_DoMouseMoved(const CCallOfDutyEngine *_this,
                                            Point inDelta, Point inPoint,
                                            UInt32 inModifiers);
@@ -271,16 +265,6 @@ int SDL_PumpInputEvents(void)
                 ++inputEventCount;
             }
             break;
-#if COD2_FEATURE_GAMEPAD
-        case SDL_CONTROLLERDEVICEADDED:
-
-            CL_Gamepad_HandleDeviceEvent(ev.type, ev.cdevice.which);
-            break;
-        case SDL_CONTROLLERDEVICEREMOVED:
-
-            CL_Gamepad_HandleDeviceEvent(ev.type, ev.cdevice.which);
-            break;
-#endif
         }
     }
 
@@ -314,11 +298,6 @@ void IN_Frame(void)
     if (SDL_PumpInputEvents() > 0) {
         suppressNativeInputFrames = 12;
     }
-
-#if COD2_FEATURE_GAMEPAD
-
-    CL_Gamepad_Frame();
-#endif
 
     if (suppressNativeInputFrames > 0) {
 

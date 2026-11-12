@@ -7,7 +7,6 @@ Live list. Remove an entry when it is fixed (and record the fix in
 
 | Risk | Impact | Notes |
 |---|---|---|
-| Dead `!COD2_PLUS_SCRIPT` / `!COD2_PLUS_SERVER` branches | engine code no build compiles (41 sites) | every build defines these since the engine's server and VM were removed ([ADR 0015](../architecture/adr/0015-msvc-abi-client-on-the-bridge.md)) |
 | The script bridge module has no ABI asserts | a script crossing whose type changes size between ABIs (`long double`, `time_t` on the MSVC runtime) would miscall at run time; none crosses today | only `server` and `client_server` have `test/<module>_abi*.txt`; hand-writing a `script` ABI file in that format would add them |
 | Web build not run | its page may not reach a game: 65 symbols link undefined (`test/web_undefined.txt`, `CG_Init` among them) | `build_check.py web` builds it; nothing runs it in a browser |
 | x64 clients not fully checked against the 32-bit ones | on Windows the view was closer and bluer (before the 2026-11-03 fixes; not rechecked) | Linux x64 draws effects and lights `mp_toujane` as 32-bit (`fx_test.py`, eye-level screenshots, llvmpipe); Windows only under a 64-bit Wine, which keeps data below 4 GB. Translucent effects sort by material address, so overlaps can blend in another order. The save-game `Archive` code still uses x86 offsets (unused in MP). The Windows client builds without libcod: `src/libcod/gsc_memory.cpp` keeps pointers in `long`, 4 bytes on Win64 (to fix in OpenCoD2-Plus Server) ([ADR 0010](../architecture/adr/0010-64-bit-dedicated-server-without-the-engine.md)) |
@@ -51,6 +50,5 @@ Live list. Remove an entry when it is fixed (and record the fix in
 | Simplification | Notes |
 |---|---|
 | Full screen on the Direct3D 9 path is a borderless desktop window with the frame stretched, not an exclusive mode change | resolution comes from `r_mode` as in the original |
-| `COD2_FEATURE_GAMEPAD`, `COD2_FEATURE_RUMBLE` blocks remain | their sources were removed: nothing set the macros; turning one on no longer links |
 | `ClickToContinue` not ported: 1.3's `IN_Frame` (`0x464b30`) posts a left click each frame while that dvar is set | nothing registers or sets it, in the game's data or the engine; porting it means emulating `IN_MouseEvent`'s button state |
 | Shaders' `//` comments blanked before compiling | Wine's compiler rejects one after an `#include` |

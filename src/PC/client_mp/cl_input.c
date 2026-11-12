@@ -9,13 +9,6 @@ extern LegacyHacks *legacyHacks;
 extern const dvar_t *cl_nodelta;
 extern const dvar_t *cl_packetdup;
 
-#if COD2_FEATURE_GAMEPAD
-extern void CL_Gamepad_Init(void);
-extern void CL_Gamepad_Shutdown(void);
-extern void CL_Gamepad_Move(usercmd_t *cmd);
-extern void CL_Gamepad_NoteKbmActive(void);
-#endif
-
 extern const dvar_t *cl_yawspeed;
 extern const dvar_t *cl_pitchspeed;
 extern const dvar_t *cl_anglespeedkey;
@@ -1091,9 +1084,6 @@ void CL_InitInput(void)
         cl_nodelta = nodelta;
     }
 
-#if COD2_FEATURE_GAMEPAD
-    CL_Gamepad_Init();
-#endif
 }
 
 void CL_ShutdownInput(void)
@@ -1168,9 +1158,6 @@ void CL_ShutdownInput(void)
     Cmd_RemoveCommand("+talk");
     Cmd_RemoveCommand("-talk");
 
-#if COD2_FEATURE_GAMEPAD
-    CL_Gamepad_Shutdown();
-#endif
 }
 
 void CL_CmdButtons(usercmd_t *cmd)
@@ -1247,12 +1234,6 @@ void CL_MouseMove(usercmd_t *cmd)
     cl->mouseIndex = index;
     cl->mouseDx[index] = 0;
     cl->mouseDy[index] = 0;
-
-#if COD2_FEATURE_GAMEPAD
-
-    if (mx * mx + my * my > 9.0f)
-        CL_Gamepad_NoteKbmActive();
-#endif
 
     if (frame_msec == 0) {
         return;
@@ -1426,11 +1407,6 @@ void CL_KeyMove(usercmd_t *cmd)
 
     cmd->forwardmove = ClampChar(forward);
     cmd->rightmove = ClampChar(side);
-
-#if COD2_FEATURE_GAMEPAD
-
-    CL_Gamepad_Move(cmd);
-#endif
 
 #undef KB_AT
 }
