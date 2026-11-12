@@ -5,6 +5,12 @@ stage; never rewrite a past stage (correct it with a new one). Not a
 changelog: record what changed, why it mattered, what was rejected or left
 open. Template in [DEVELOPMENT_GUIDE.md](DEVELOPMENT_GUIDE.md#memory-entry).
 
+## 2026-11-12 — debt cleanup: dead blocks, MSVC downloads
+
+- Removed the `COD2_FEATURE_GAMEPAD`/`_RUMBLE`/`_SPLITSCREEN` blocks and the macro `COD2_PLUS_SCRIPT` with its 41 dead `!COD2_PLUS_SCRIPT` blocks in `src/blobs/bss.c` (and 11 in the prebuilt `data32.c`, `data.win.S`). The `!COD2_PLUS_SERVER` branches debt.md listed with them are live: only the dedicated servers define it.
+- The MSVC-ABI client now downloads through `win_wininet.c` (it was gated on `__MINGW32__`, so it linked the curl stubs); its link map shows `curl_easy_init` from `win_wininet.c`. Its "no sound" entry was stale: since it became the MinGW branch built by clang (2026-11-05) it links `src/snd_sdl` (`AIL_startup` from `snd_ail.c`). Neither was run on Windows.
+- New rule (AGENTS.md, DEVELOPMENT_GUIDE.md): every commit reviews all the docs and `docs/roadmap/debt.md` against the change.
+
 ## 2026-11-09 — the server browser's columns and clicks
 
 - The PC `joinserver.menu` has 11 columns, the Mac build this follows 10: the ping went into the PunkBuster column and the sort keys were one short. Column and sort key 9 are now PunkBuster (empty, sorted by ping) and 10 the ping, the default sort.

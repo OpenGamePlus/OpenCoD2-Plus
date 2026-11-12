@@ -26,6 +26,7 @@ Rules for contributors and AI agents. Tooling details:
 
 | When you… | Update |
 |---|---|
+| commit anything | first review all the docs and `docs/roadmap/debt.md` against the change; fix what it makes stale, remove the debt it closes, add the debt it leaves |
 | change a boundary, add a bridge module or an exception | `docs/architecture/boundaries.md` (+ an ADR if it is a decision) |
 | add or change a build option, variant or check | `docs/development/building.md`, `SYSTEM_SUMMARY.md` |
 | add or change a test script | `docs/development/testing.md` |

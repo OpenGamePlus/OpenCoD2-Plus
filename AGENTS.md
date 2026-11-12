@@ -20,6 +20,9 @@ OpenCoD2-Plus Server's code over the reconstructed engine.
 
 ## Keep the docs in sync
 
+Before every commit, review all the documentation (`docs/`, `docs/ai/`,
+`AGENTS.md`) and `docs/roadmap/debt.md` against the change: a line it makes
+wrong or stale, or a debt entry it closes or opens, is fixed in that commit.
 A change that makes a doc wrong updates it in the same commit; each finished
 piece of work adds a stage to `docs/ai/PROJECT_MEMORY.md`. Rules:
 [docs/ai/DEVELOPMENT_GUIDE.md](docs/ai/DEVELOPMENT_GUIDE.md#doc-sync-rules).

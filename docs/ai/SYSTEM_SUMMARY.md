@@ -1,6 +1,6 @@
 # System summary (live snapshot)
 
-Last updated: 2026-11-08. Update in the same commit as the change that makes
+Last updated: 2026-11-12. Update in the same commit as the change that makes
 a line wrong.
 
 ## Repository
@@ -37,7 +37,7 @@ cod2rad/             upstream tool (not built by default)
 | `cod2_linux` (x86_64) | Linux, `-DCOD2_X64=ON` | on DXVK like the 32-bit one ([ADR 0018](../architecture/adr/0018-the-x64-linux-client-on-dxvk.md)); loads and plays a map on OpenCoD2-Plus Server's VM and server; effects and world lighting equal the 32-bit client's (`fx_test.py`, screenshots) |
 | `cod2_win32.exe` (x86_64) | MinGW-w64, `cmake/toolchain-mingw64.cmake` | plays on real Windows, online and in local games; real Direct3D 9; no libcod; not yet equal to the 32-bit client |
 | `cod2_win32.exe` | MinGW | works; real Direct3D 9; plays on public 1.3 servers |
-| `cod2_win32.exe` | MSVC ABI (clang, lld-link) | builds (`build_check.py msvc-client`); plays a local game on Windows (`msvc_run_test.py`); the bridge and libcod as MinGW's |
+| `cod2_win32.exe` | MSVC ABI (clang, lld-link) | builds (`build_check.py msvc-client`); plays a local game on Windows (`msvc_run_test.py`); the bridge, libcod, sound (`src/snd_sdl`) and HTTP downloads (WinINet) as MinGW's |
 | `cod2` (web) | Emscripten (`third_party/emsdk`) | builds on the bridge (`build_check.py web`, no libcod); 65 symbols link undefined, `CG_Init` among them; not run in a browser |
 
 ## Subsystems

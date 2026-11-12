@@ -135,8 +135,8 @@ void _ZN21CDirect3DVertexShaderD0Ev(void){} void _ZN21CDirect3DVertexShaderD1Ev(
 void FD_ZERO(void *s){ if(s)*(unsigned*)s=0; }
 void FD_SET(unsigned fd, void *s){ unsigned *c=(unsigned*)s; if(*c<64){((unsigned*)((char*)s+4))[*c]=fd;(*c)++;} }
 
-/* the MinGW client downloads through WinINet (win_wininet.c) */
-#if !(defined(W32_CLIENT) && defined(__MINGW32__))
+/* the Windows clients download through WinINet (win_wininet.c) */
+#ifndef W32_CLIENT
 void *curl_easy_init(void){return 0;}
 int   curl_easy_setopt(void*a,int b,...){(void)a;(void)b;return 0;}
 int   curl_easy_getinfo(void*a,int b,...){(void)a;(void)b;return 0;}

@@ -1,14 +1,14 @@
 /*
  * The part of libcurl's easy and multi interfaces that the redirected
- * download (src/PC/qcommon/dl_main.c) uses, on WinINet, for the MinGW
- * client: the 1.3 binary downloads with its own HTTP library over WSOCK32,
+ * download (src/PC/qcommon/dl_main.c) uses, on WinINet, for the Windows
+ * clients: the 1.3 binary downloads with its own HTTP library over WSOCK32,
  * the Linux client links libcurl, and Windows has no libcurl of its own.
  *
  * Each transfer runs on a thread of its own; curl_multi_perform hands the
  * bytes it has received to the write callback on the caller's thread, so
  * dl_main.c sees the same order of calls as with libcurl.
  */
-#if defined(W32_CLIENT) && defined(__MINGW32__)
+#if defined(W32_CLIENT)
 
 #    include <windows.h>
 #    include <wininet.h>
