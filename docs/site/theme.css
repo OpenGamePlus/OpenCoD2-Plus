@@ -27,3 +27,7 @@ html {
 #nav-tree .selected { background: #c9a458; }
 #nav-tree .selected a, #nav-tree .selected .arrow { color: #151b20; }
 #nav-tree a, #nav-tree .label { color: var(--side-nav-foreground); }
+
+/* dark mode keeps the brass instead of doxygen-awesome's blue */
+@media (prefers-color-scheme: dark) { html:not(.light-mode) { --primary-color: #c9a458; --primary-dark-color: #e0c27c; --primary-light-color: #8e6c2c; --page-background-color: #151b20; --side-nav-background: #11161a; } }
+html.dark-mode { --primary-color: #c9a458; --primary-dark-color: #e0c27c; --primary-light-color: #8e6c2c; --page-background-color: #151b20; --side-nav-background: #11161a; }
