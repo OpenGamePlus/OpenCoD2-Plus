@@ -51,6 +51,7 @@ cod2rad/             upstream tool (not built by default)
 | Effects | all primitives per 1.3 | [../architecture/effects.md](../architecture/effects.md) |
 | Sound | Our own SDL2 engine, `src/snd_sdl/`, behind the `AIL_*` calls, on Linux and Windows; `mss32.dll` is not used | [ADR 0012](../architecture/adr/0012-sound-engine-behind-the-ail-calls.md), [../architecture/client.md](../architecture/client.md#sound) |
 | Online play | CD key auth, HTTP downloads (curl on Linux, WinINet on Windows), a signed Plus ID at connect (`fs_homepath/plusid.key`, not on the web) | 1.3 servers; prediction measured against 1.3 on a modded server; hostile input bounded ([../architecture/client.md](../architecture/client.md#what-a-server-cannot-do)) |
+| Docs site | GitHub Pages from `docs/Doxyfile`, built by `.github/workflows/pages.yml` on every push to main | <https://opengameplus.github.io/OpenCoD2-Plus/> |
 
 Open items: [../roadmap/debt.md](../roadmap/debt.md).
 

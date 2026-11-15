@@ -5,6 +5,11 @@ stage; never rewrite a past stage (correct it with a new one). Not a
 changelog: record what changed, why it mattered, what was rejected or left
 open. Template in [DEVELOPMENT_GUIDE.md](DEVELOPMENT_GUIDE.md#memory-entry).
 
+## 2026-11-15 — new identity and documentation site
+
+- New banner (night slate, brass, steel; Black Ops One/Oswald/Rajdhani with system fallbacks, since GitHub draws SVG in `<img>` without web fonts). `docs/icon.svg` is its badge and `src/win32/opencod2.ico` is rendered from it; the README badges take its brass `#c9a458`.
+- GitHub Pages site with Doxygen and doxygen-awesome-css, as OpenBF1942-Plus: `docs/Doxyfile`, `docs/site/theme.css`, `.github/workflows/pages.yml` on every push to main. It carries `docs/` and `scripts/`; `src/` (~48 MB) is left out. Theme fetched at build time, not vendored.
+
 ## 2026-11-12 — debt cleanup: dead blocks, MSVC downloads
 
 - Removed the `COD2_FEATURE_GAMEPAD`/`_RUMBLE`/`_SPLITSCREEN` blocks and the macro `COD2_PLUS_SCRIPT` with its 41 dead `!COD2_PLUS_SCRIPT` blocks in `src/blobs/bss.c` (and 11 in the prebuilt `data32.c`, `data.win.S`). The `!COD2_PLUS_SERVER` branches debt.md listed with them are live: only the dedicated servers define it.

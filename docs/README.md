@@ -1,5 +1,9 @@
 # Documentation
 
+![OpenCoD2-Plus](banner.svg)
+
+Published as a site at <https://opengameplus.github.io/OpenCoD2-Plus/> (built from `docs/Doxyfile` on every push to main).
+
 English. The project's summary for a wide audience is the root
 [README](../README.md); this is the technical documentation.
 

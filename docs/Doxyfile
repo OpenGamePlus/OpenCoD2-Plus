@@ -1,0 +1,26 @@
+PROJECT_NAME           = "OpenCoD2-Plus"
+PROJECT_BRIEF          = "Call of Duty 2 client & server, rebuilt"
+PROJECT_LOGO           = docs/icon.svg
+OUTPUT_DIRECTORY       = build/site
+# src/ is ~48 MB of reconstructed engine: the site carries the docs and the scripts
+INPUT                  = docs scripts
+FILE_PATTERNS          = *.md *.py
+RECURSIVE              = YES
+EXCLUDE                = docs/site docs/superpowers
+USE_MDFILE_AS_MAINPAGE = docs/README.md
+IMAGE_PATH             = docs
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+MARKDOWN_ID_STYLE      = GITHUB
+TOC_INCLUDE_HEADINGS   = 3
+WARN_IF_UNDOCUMENTED   = NO
+GENERATE_LATEX         = NO
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+HTML_COLORSTYLE        = LIGHT
+HTML_COPY_CLIPBOARD    = YES
+HTML_CODE_FOLDING      = YES
+HTML_EXTRA_STYLESHEET  = docs/site/awesome/doxygen-awesome.css \
+                         docs/site/awesome/doxygen-awesome-sidebar-only.css \
+                         docs/site/theme.css
